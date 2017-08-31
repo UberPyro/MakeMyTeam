@@ -1,0 +1,26 @@
+{% extends "header.html" %}
+{% block content %}
+<h3>2-Team Check Map Selected.</h3>
+<p>This displays a table of the check levels of the Pokemon on two teams, to see how two teams fare against each other, and what Pokemon need to be eliminated for 1 team to win. 
+Note that this does not work very well due to missing data (there tends to be a lot of "None"). 
+Also note that the result is read as: [Pokemon on the left] [Is a NSI/SSI/GSI to - OR - Is NSI/SSI/GSIed by] [Pokemon on top]. </p>
+<form action="" method="post">
+    {{ form.as_p }}
+    {% for tc in team_count%}
+        <button type="submit" name="{{ tc }}" class="btn btn-default">{{ tc }}</button>
+    {% endfor %}
+    <button type="submit" name="add_pkmn_field0" class="btn btn-default">Add Pokemon Field To Team 1</button>
+    <button type="submit" name="add_pkmn_field1" class="btn btn-default">Add Pokemon Field To Team 2</button>
+    <button type="submit" name="calculate" class="btn btn-default">Generate</button>
+</form>
+<hr>
+<p><em>Pokemon #X (Team 1): </em>Pokemon sets entered here will show up on the left of the table. 
+Each entry must exactly match with a set in the Checks Compendium build data so use the autocomplete suggestions to help. 
+(The suggestions may not work on Safari). 
+Click "Add Pokemon Field" to input more Pokemon. 
+Refresh or return to this page to reset. </p>
+
+<p><em>Pokemon #X (Team 2): </em>Pokemon sets entered here will show up on top of the table. </p>
+
+<p>Team 1 and Team 2 can each be of any size. </p>
+{% endblock %}

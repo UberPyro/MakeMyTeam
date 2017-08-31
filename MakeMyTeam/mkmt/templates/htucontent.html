@@ -1,0 +1,72 @@
+{% extends "header.html" %}
+{% block content %}
+<h3>How To Update Or Modify This Tool</h3>
+
+<p>
+Checks Data (From Orda-Y's github): <a href=https://raw.githubusercontent.com/Hidden50/brmt/gh-pages/data/gen7OU.js>
+https://raw.githubusercontent.com/Hidden50/brmt/gh-pages/data/gen7OU.js</a><br>
+set_link: <a href=https://gist.githubusercontent.com/UberPyro/ac48cc7f387a8479458a81a6db85c03e/raw/42eb00f89f06bfc4fc5bd83e9494934fe7c3ba1d/set_link.txt>
+https://gist.githubusercontent.com/UberPyro/ac48cc7f387a8479458a81a6db85c03e/raw/42eb00f89f06bfc4fc5bd83e9494934fe7c3ba1d/set_link.txt</a><br>
+Usage Data: <a href=http://www.smogon.com/stats/>
+http://www.smogon.com/stats</a>
+</p>
+
+<p>Note: I, the developer, will try to keep the complete web version updated. This page exists mostly
+for people that are interested in the particulars of the program or who want to modify it in their 
+own way. </p>
+
+<p>There are 3 databases which this program uses: the (Set-Based) Checks Compedium, the Usage Stats, 
+and the Moveset Usage Stats. As of finishing the web-based version, this program accesses these 
+databases upon startup through a series of HTTP requests (basically, it uses the internet to 
+get all the data it needs). Now, if the server running the program has appropriately named files 
+(checks.txt, usage.txt, set_usage.txt, and set_link.txt) in the same directory as "manage.py", 
+then these will override their respective internet request, and the program will use the data 
+inside of the file. With the current internet set-up, the program should update itself <dfn>for the 
+most part</dfn>, but some manual updating is still required (more on this further down). </p>
+
+<p>In older versions it was required to manually generate the set usage stats upon updating the 
+usage stats or move usage stats. The set usage stats is now generated upon start up and no 
+longer exists as a file. </p>
+
+<p>Whenever a new Pokemon-Set is added to the Checks Compendium, then the set_link.txt file may 
+need to be edited. The Set Link tells the computer how to tell different Pokemon sets apart, 
+by associated a Pokemon set with an item, ability, or move which only that particular set 
+uses on that Pokemon. Unfortunately, this system is not perfect because that unique item, 
+ability or move does not always exist (and having to hard code a bunch of Pokemon would be 
+difficult), but there is no better solution (other than hard coding). Often, a good enough 
+approximation can be made even if the association between the Pokemon and the item, ability, 
+or move (let's call that a 'signifier') is not unique or wholly relates. </p>
+
+<p>mkmt version 3.0 now supports doing math with the value retreived by a signifier. This 
+means that if a Pokemon does not have a unique signifier, a Pokemon set can be identified 
+by absense, for example, all Zapdos that DO NOT have leftovers; ('Leftovers', 100.0 - x), 
+or by a heuristic which approximates what the set usage should be around (this is not an 
+exact science, some give and take can be tolerated). This also allows numbers to be 
+hardcoded if the math part is just a number, i.e. ('dummy signifier', 100.0). </p>
+
+<p>Now, if a Pokemon has only one set, that set is assumed to have 100% usage and it cannot go 
+into the Set Link file (else duplicates). If a Pokemon has two sets but one of them has 
+such low usage that it is impossible to get a reasonable value by associating a signifier, 
+then the low-usage set should be left out, and the used set still needs to be included in 
+the Set Usage file so that the mkmt knows which set to use. The mkmt will still apply the 
+signifier to the Pokemon (so its not assumed at 100% usage unless hardcoded as such). Of course, 
+if a Pokemon has multiple sets, every Pokemon-Set combination should be included, each with 
+the signifier associated. </p>
+
+<p>(Of course I will be handling the set_link file myself). </p>
+
+<p>Let's say you want to update this mkmt for another tier. Here is what would need to happen: 
+First of all, there would have to be a set-based Checks Compendium for that tier. Techncially, 
+this mkmt can handle setless Pokemon (it just hands them a '??' as their set), but whether or 
+not it would be worth it with a regular checks compendium would be questionable. Second, 
+the Greninja-Ash hard coding would have to be removed from mkmt.py (getting its usage is hard 
+coded because the Checks Compendium thinks that Greninja-Ash is a set of Greninja, which means 
+that the mkmt wants to grab the usage of Greninja's base form and a signifier... you see the 
+problem). (Note that all hard coding is labled in the code, use ctrl + f). (The Greninja 
+hard coding is contained within mkmt_init.py). Additionally, the rain hard coding would have 
+to be removed (disables some rain Pokemon be default) (This is much more difficult to remove/
+modify because it is scattered across forms.py (I forgot to make it easy to edit) and also 
+the functionality is integrated into views.py (removing it completely would take some work). 
+I currently do not plan on updating this for another tier and do not see another Set-Based 
+Checks Compendium being made but I'm leaving this here just in case. </p>
+{% endblock %}

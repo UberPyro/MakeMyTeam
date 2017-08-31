@@ -1,0 +1,47 @@
+{% extends "header.html" %}
+{% block content %}
+<h3>Partner Finder Selected.</h3>
+<p>This generates partners for an inputted Pokemon. </p>
+<form action="" method="post">
+    {{ form.as_p }}
+    <button type="submit" name="add_blwl_field" class="btn btn-default">Add Blacklist/Whitelist Field</button>
+    <button type="submit" name="calculate" class="btn btn-default">Generate</button>
+</form>
+<hr>
+<p><em>Pokemon: </em>This is the Pokemon for which partners are found. 
+The entry must exactly match with a set in the Checks Compendium build data so use the autocomplete suggestions to help. 
+(The suggestions may not work on Safari). </p>
+
+<p><em>Weighting: </em>These define how much a NSI/SSI/GSI is worth (in that order). 
+There are default weights which describe "to check" and "to counter". 
+(These might not show on Safari). 
+See the About page for more information if you want to change these from the defaults (Warning: it's complicated). </p>
+
+<p><em>Optimize: </em>Switches beween NSI/SSI/GSI data and NSI to/SSI to/GSI to data. 
+"By" data considers how good a team is at checking/countering, and "To" data considers how good the metagame can check/counter the team. 
+Note that both the weighting and the view affect the interpretation of the output: </p>
+<ul>
+<li>[Check Weighting, By]: Finds teams which check the most: Generates the best teams offensively</li>
+<li>[Counter Weighting, By]: Finds the teams which counter the most: Genereates the best teams defensively</li>
+<li>[Check Weighting, To]: Finds the teams which are checked the least: Generates the teams that are the hardest to sweep</li>
+<li>[Counter Weighting, To]: Finds the teams which are countered the least: Generates the best teams for breaking stall</li>
+</ul>
+<p><em>Blacklist/Whitelist: </em> Enter Pokemon Sets into these fields. 
+Each entry must exactly match with a set in the Checks Compendium build data so use the autocomplete suggestions to help. 
+(The suggestions may not work on Safari). 
+Click "Add Blacklist/Whitelist" to input more Pokemon. 
+Refresh or return to this page to reset. 
+Pokemon inputted here are blacklisted from the generation algorithm (meaning that they won't be suggested as partners). </p>
+
+<p><em>Blacklist/Whitelist Mode: </em>If whitelist mode is enabled, only inputted Pokemon are used by the team generator. </p>
+
+<p><em>Blacklist Rain: </em>Puts rain Pokemon on the generation blacklist if in blacklist mode. </p>
+
+<p><em>Make Usage Blind:</em> Normally, the mkmt weights Pokemon by usage by multiplying a Pokemon's set usage with its check weighting. 
+The thinking is that it is better to counter 1 Pokemon with 5% usage than 2 Pokemon with 2% usage because the team is more likely to have a 
+favorable matchup against a random team on the ladder (5 &gt; 2*2). 
+Sometimes, this is unwanted or does not make sense (such as when considering a small fraction of the metagame or counterteaming, 
+or when building a team where ladder usage is not representative of what the team is expected to face). </p>
+
+<p><em>Filter Duplicate Species and Megas: </em>This removes teams containing more than one Mega Pokemon or more than one Pokemon of the same species. </p>
+{% endblock %}

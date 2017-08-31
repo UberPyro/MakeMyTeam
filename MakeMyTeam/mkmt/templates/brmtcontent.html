@@ -1,0 +1,36 @@
+{% extends "header.html" %}
+{% block content %}
+<h3>BreakMyTeam</h3>
+<p>This shows Pokemon which the inputted team or partial team is weak to; 
+it also rates the team in terms of metagame coverage. </p>
+<form action="" method="post">
+    {{ form.as_p }}
+    <button type="submit" name="add_pkmn_field" class="btn btn-default">Add Pokemon Field</button>
+    <button type="submit" name="calculate" class="btn btn-default">Generate</button>
+</form>
+<hr>
+<p><em>Pokemon #X: </em>Pokemon sets entered in these fields will make up the input team. 
+Each entry must exactly match with a set in the Checks Compendium build data so use the autocomplete suggestions to help. 
+(The suggestions may not work on Safari). 
+Click "Add Pokemon Field" to input more Pokemon. 
+Refresh or return to this page to reset. </p>
+
+<p><em>Check Weighting / Counter Weighting: </em>These define how much a NSI/SSI/GSI is worth (in that order) for checks and counters respectively. 
+See the About page for more information if you want to change these from the defaults (Warning: it's complicated). </p>
+
+<p><em>View: </em>Switches beween NSI/SSI/GSI data and NSI to/SSI to/GSI to data. 
+This is the same as switching BreakMyTeam and WallMyTeam on a traditional brmt. 
+"By" data considers how good the team is at checking/countering, and "To" data considers how good the metagame can check/counter the team. 
+Note that both the weighting and the view affect the interpretation of the output: </p>
+<ul>
+<li>[Check Weighting, By]: What the inputted team can check the least: Shows how good the team is offensively</li>
+<li>[Counter Weighting, By]: What the inputted team can counter the least: Shows how good the team is defensively</li>
+<li>[Check Weighting, To]: What checks the inputted team the most: Shows how hard the team is to sweep</li>
+<li>[Counter Weighting, To]: What counters the inputted team the most: Shows how effective the team is versus stall</li>
+</ul>
+<p><em>Make Usage Blind:</em> Normally, the mkmt weights Pokemon by usage by multiplying a Pokemon's set usage with its check weighting. 
+The thinking is that it is better to counter 1 Pokemon with 5% usage than 2 Pokemon with 2% usage because the team is more likely to have a 
+favorable matchup against a random team on the ladder (5 &gt; 2*2). 
+Sometimes, this is unwanted or does not make sense (such as when considering a small fraction of the metagame or counterteaming, 
+or when building a team where ladder usage is not representative of what the team is expected to face). </p>
+{% endblock %}

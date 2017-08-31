@@ -1,0 +1,133 @@
+{% extends "header.html" %}
+{% block content %}
+<p><em>Usage Data For: </em>{{ content }}</p>
+
+<h3>What is this?</h3>
+
+<p>This is called a MakeMyTeam (mkmt). It is a tool to (help) build Pokemon teams. 
+It suggests Pokemon by using the Checks Compendium and Usage Stats to see what percent of the metagame 
+a (group of) Pokemon can check or counter, and then it minimizes or maximizes a chosen statistic. </p>
+
+<p>This is intended to help build teams by suggesting Pokemon that help cover a team's weakness, and 
+by generating groups of Pokemon which share great synergy. </p>
+
+<p>This in no way attempts to replace a human builder for a number of reasons. First of all, the 
+team generator does not understand that teams need utility (Stealth Rock [SR] and sometimes Defog/Rapid Spin)
+and does not understand that sweepers need to set up. It does not understand that it is hard to 
+keep up rain and thus rain Pokemon are not broken as they seem to be. It does not understand synergy 
+between abilities (for example, taking advantage of a terrain laid down by another Pokemon). 
+The only thing the team generator understands is metagame coverage. </p>
+
+<p>However, a human can understand that a team needs SR, and can take advantage of the full 
+functionality of this mkmt to ensure that an SR user is apart of the team. A human can 
+also generate one segment of a team at a time, getting around the fact that the team generator
+can only focus on offensive or defensive metagame coverage at once. </p>
+
+<h3>General: </h3>
+
+<p>Funtions will explain each of their fields underneath the inputs. </p>
+
+<p>The field which contains the weightings may need to be cleared to show all options (depending on the type 
+of field it is implemented as). </p>
+
+<p>Using the back arrow on your browser as opposed to the "Return" button after generating will refill the 
+form with the inputs used to get that result (useful for tweaking a result). </p>
+
+<h3>Other information: </h3>
+
+<p>There is currently no way to "export" a team. </p>
+
+<p>Of course, this teambuilder may suggest Pokemon and build teams that do not make sense. Usually this is 
+due to the team generator thinking a Pokemon is better or worse than it really is (and usually you can 
+figure out why the generator thinks the way it does). It is up to the human builder to be able to sort 
+through what is reasonable and what is not. </p>
+
+<p>(The information past here is not important for use)</p>
+
+<h3>How to interpret the numbers: </h3>
+
+<p>After you have generated some teams, you might start to wonder what all those numbers listed in the 
+square brackets [] mean. First of all, the meaning depends on the optimization category selected 
+(are you maximizing what the team checks and counters, are you minimizing what the team is checked 
+and is countered by?), and the quantity of numbers in the list is dependent on how big the team 
+is (or more accurately, how many Pokemon in the team have data on them). The first number is the 
+union of the optimization category on every Pokemon: it is the total metagame percentage the entire 
+team checks, or counters, or that one member on the team is checked by, or is countered by. The 
+second number is the total metagame percentage that at least two Pokemon on the team check/counter 
+in common (or 'are checked by' or 'are countered by'), so that if two Pokemon counter 
+Landorus-Therian|scarf, then that set's metagame usage is apart of that second data number. This 
+pattern continues through the rest of the list. </p>
+
+<h3>How can you make this tool more awesome: </h3>
+
+<p>If there are any spelling errors or bugs, let me (UberPyro) know either on PS! or Smogon. If 
+you are a better programmer than me (doesn't take much) and want to make any optimizations/
+improvements/anything then let me know. If you want to make your own version on a faster 
+programming language or JavaScript (for the web), then you are free to do so. </p>
+
+<p>The #1 most useful thing would be to improve the <a href=http://www.smogon.com/forums/threads/3607904/>Checks Compendium</a>. The current OU Set-Based Checks 
+Compendium is the only reason why the mkmt is able to exist at all, and it is the most important 
+database for team generation. </p>
+
+<h3>How does this mkmt work? For the technically inclined: </h3>
+
+<p>First, understand how the mkmt determines what is a check and what is a counter. The Checks Compendium 
+maps Pokemon to NSI, SSI, and GSI rated switch-ins. Old versions of the mkmt would consider Pokemon in 
+all three categories as checks, and Pokemon in the SSI and GSI categories as counters. There are two 
+problems with this. Firstly (and most prominently) SSIs are not counters, but they had to be included 
+otherwise the generation algorithms would make no attempt to counter Pokemon with no GSIs, for there 
+would be no data on them. Secondly, there would be no preference placed on GSIs over SSIs, etc. To fix 
+these problems, this program now uses a weighting system to determine what is a check and a counter. 
+A weight is given to each switch-in level (NSI, SSI, GSI) on _how well_ it can check and counter a 
+Pokemon. Of course, checking and countering is theoretically black and white: all switch-in levels 
+check, and only GSI truly counters. However, we can set a preference for higher switch-in levels over 
+lower ones by stating that an SSI _partially_ counters Pokemon, and a GSI checks _better_ than an NSI. 
+Specifically, the weighting system states the percentage of coverage (in decimal). So if a GSI has a 
+weight of 1 for 'Counter' and SSI has a weight of .25, then a GSI counters its target once and an SSI 
+counters its target .25 times. This also means that four SSIs provides equivalent coverage to one GSI 
+in this system (which is an approximation at best). </p>
+
+<p>From here, rating a Pokemon and rating an entire team is not much different. Every Pokemon has a 
+corresponding array of counter data: that is, a large list of numbers where the index (position) 
+in the array is equal to an arbitrary ID handed out upon a load function and where the numbers 
+in the array are equal to the weight of the switch-in level for the respective Pokemon (and is 0
+if that data does not exist). These arrays of data can be summed to obtain how many times the team 
+checks and counters each Pokemon. </p>
+
+<p>The mkmt also reads from usage data. It uses this usage data to shift the perspective from "countering 
+Pokemon" to "countering the metagame". Every Pokemon Set has usage data (how this data is obtained is 
+explained in the How To Update section). This usage data states the percent use of that Pokemon Set out 
+of all Pokemon Sets in the metagame for all Pokemon. It is then applied to check data (described 
+previously) to _rate_ a team. The thinking goes like this: if a Pokemon makes up 2% of the metagame, then 
+countering that Pokemon means countering 2% of the metagame. If a team counters Pokemon sets with 5%, 10%, 
+and 2% usage, then that team counters 17% of the metagame. By multiplying the array of check data with an 
+array of usage data (indexed with corresponding IDs), we can now find how much of the metagame a team checks 
+and counters. We can extend this to find how many times a Pokemon team checks the metagame once, what percent 
+it checks two times, three times, etc. This provides a solid method with which to rate teams. </p>
+
+<p>From here, we can finally move onto team generation. There are currently two algorithms which can be used to 
+generate teams: a recursive algorithm, and a combinations algorithm. The following explanation is a copy/paste 
+from the custom generation page: </p>
+
+    <ul><li>[1] Recursive Corebuilding: Builds small cores to build bigger cores to build teams. 
+    For example, a team of 6 is built from two cores of 3, which is each built by a stand-alone 
+    Pokemon and a core of 2, which is each built from 2 stand-alone Pokemon. This has the advantage 
+    of 'digging deeper' (considering a very large pool of Pokemon) and theoretically should 
+    produce good diversity. However, it doesn't consider 'all combinations' and won't find every 
+    highly rated combination. </li><br>
+
+    <li>[2] Top Combinations: Finds all combinations of the top Pokemon. Since calculating all 
+    Pokemon combinations is too difficult, this algoritm ranks the Pokemon and takes the top 
+    17 ~ 19 Pokemon (this automatically scales higher the lower the number of Pokemon being 
+    generated). Then, it finds the best group from there (so if generating a full team from 
+    scratch, it finds the best combinations of 6 elite stand-alone Pokemon). This has the 
+    advnatage of producing teams that are scored higher, and shouldn't miss any top teams. 
+    However, the teams tend to look alike, and the search is very shallow. </li></ul>
+
+<p>The basic idea is to generate a very large number of combinations of Pokemon, and then to rank those combinations. 
+If maximizing the number of Pokemon sets a team checks or counters, it will first try to maximize the number it 
+counters one time, then two times, and so on. If trying to minimize team checks and counters, it will go the other 
+way: if optimizing a full team of six Pokemon, it will first try to minimize the number of Pokemon with check/counter 
+Pokemon on the team six times, then five times, and so on. This is due to the flip in logic: how the team is trying 
+to reduce the number of shared weaknesses rather than trying to cover as wide an area as possible offensively. </p>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "header.html" %}
+{% block content %}
+<h3>Pokemon Data Selected</h3>
+</p>This shows coverage and usage data on an inputted Pokemon. </p>
+<form action="" method="post">
+    {{ form.as_p }}
+    <button type="submit" name="calculate" class="btn btn-default">Generate</button>
+</form>
+<hr>
+<p><em>Pokemon: </em>Enter a Pokemon Set into this field. 
+The entry must exactly match with a set in the Checks Compendium build data so use the autocomplete suggestions to help. 
+(The suggestions may not work on Safari). </p>
+{% endblock %}
