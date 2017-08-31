@@ -1,1 +1,0 @@
-web: gunicorn mkmt.wsgi --log-file -
