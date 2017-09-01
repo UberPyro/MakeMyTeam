@@ -132,9 +132,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
+# PROJECT_ROOT = "/".join(os.path.dirname(os.path.abspath(__file__)).split("/")[:-1])+"/mkmt"
 
-PROJECT_ROOT = "/".join(os.path.dirname(os.path.abspath(__file__)).split("/")[:-1])+"/mkmt"
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
+
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
