@@ -4,12 +4,19 @@
 
 <h3>What is this?</h3>
 
-<p>This is called a MakeMyTeam (mkmt). It is a tool to (help) build Pokemon teams. 
-It suggests Pokemon by using the Checks Compendium and Usage Stats to see what percent of the metagame 
-a (group of) Pokemon can check or counter, and then it minimizes or maximizes a chosen statistic. </p>
+<p>MakeMyTeam (mkmt) is a comprehensive Computer Teambuilding System. It is a tool to help build Pokemon teams. </p>
 
-<p>This is intended to help build teams by suggesting Pokemon that help cover a team's weakness, and 
-by generating groups of Pokemon which share great synergy. </p>
+<p>All the functions are listed out to the left. It is capable of finding partners, suggesting replacements, 
+and much more. It is also capable of generating full teams, but as those have too little human guidance, 
+those tend to be bad. </p>
+
+<p>The program uses the checks compendium to create a map of the coverage of every Pokemon in the metagame 
+(what every Pokemon checks and counters, and what checks and counters those Pokemon). 
+It also uses the usage stats, moveset usage stats, and heuristics which map the checks compendium to the 
+moveset usage stats to find the usage of each individual Pokemon set. 
+From there, it's possible to see what percent of the metagame any individual Pokemon can cover, 
+and more importantly, the percent of the metagame covered by any team, which serves as a form of rating. 
+From there, the generator can sort teams by metagame coverage, and output the highest rated teams. </p>
 
 <p>This in no way attempts to replace a human builder for a number of reasons. First of all, the 
 team generator does not understand that teams need utility (Stealth Rock [SR] and sometimes Defog/Rapid Spin)
