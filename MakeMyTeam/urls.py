@@ -35,3 +35,8 @@ urlpatterns = [
     url(r'how_to_update', include('mkmt.urls')),
     url(r'credits', include('mkmt.urls')),
 ]
+
+from <app> import settings
+urlpatterns += patterns('',
+        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
+    )
