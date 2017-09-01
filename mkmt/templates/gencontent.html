@@ -13,13 +13,13 @@ There are default weights which describe "to check" and "to counter".
 See the About page for more information if you want to change these from the defaults (Warning: it's complicated). </p>
 
 <p><em>Optimize: </em>Switches beween NSI/SSI/GSI data and NSI to/SSI to/GSI to data. 
-"By" data considers how good a team is at checking/countering, and "To" data considers how good the metagame can check/counter the team. 
+"To" data considers how good a team is at checking/countering, and "By" data considers how good the metagame can check/counter the team. 
 Note that both the weighting and the view affect the interpretation of the output: </p>
 <ul>
-<li>[Check Weighting, By]: Finds teams which check the most: Generates the best teams offensively</li>
-<li>[Counter Weighting, By]: Finds the teams which counter the most: Genereates the best teams defensively</li>
-<li>[Check Weighting, To]: Finds the teams which are checked the least: Generates the teams that are the hardest to sweep</li>
-<li>[Counter Weighting, To]: Finds the teams which are countered the least: Generates the best teams for breaking stall</li>
+<li>[Check Weighting, To]: Finds teams which check the most: Generates the best teams offensively</li>
+<li>[Counter Weighting, To]: Finds the teams which counter the most: Genereates the best teams defensively</li>
+<li>[Check Weighting, By]: Finds the teams which are checked the least: Generates the teams that are the hardest to sweep</li>
+<li>[Counter Weighting, By]: Finds the teams which are countered the least: Generates the best teams for breaking stall</li>
 </ul>
 <p><em>Blacklist Rain: </em>Puts rain Pokemon on the generation blacklist</p>
 {% endblock %}
