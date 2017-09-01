@@ -1,1 +1,1 @@
-web: gunicorn mkmt.wsgi --log-file -
+web: gunicorn MakeMyTeam.wsgi --log-file -
