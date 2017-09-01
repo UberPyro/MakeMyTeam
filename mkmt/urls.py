@@ -20,3 +20,6 @@ urlpatterns = [
     url(r'^how_to_update', views.how_to_update, name='How To Update Or Modify'),
     url(r'^credits', views.credits, name='Credits'),
 ]
+
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+urlpatterns += staticfiles_urlpatterns()
