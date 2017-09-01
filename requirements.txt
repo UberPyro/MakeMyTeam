@@ -7,3 +7,4 @@ idna==2.6
 numpy==1.13.1
 requests==2.18.4
 urllib3==1.22
+whitenoise==3.3.0
