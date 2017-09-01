@@ -36,7 +36,7 @@ urlpatterns = [
     url(r'credits', include('mkmt.urls')),
 ]
 
-from <app> import settings
+from MakeMyTeam import settings
 urlpatterns += patterns('',
         (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
     )
