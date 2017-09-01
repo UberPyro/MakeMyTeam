@@ -31,7 +31,7 @@ class mcrForm(forms.Form):
     
     ck_weight = forms.CharField(label='Check Weighting')
     cntr_weight = forms.CharField(label='Counter Weighting')
-    ck_dir = forms.ChoiceField(label='View', choices=(('to', '(Offensive) Pokemon that cover the most'), ('by', '(Defensive) Pokemon that are threatened the least')))
+    ck_dir = forms.ChoiceField(label='View', choices=(('to', 'NSI/SSI/GSI To Data'), ('by', 'NSI/SSI/GSI By Data')))
     ck_lv = forms.ChoiceField(label='Check Level', choices=(('Check', 'Check'), ('Counter', 'Counter')))
     blind = forms.BooleanField(label='Make Usage Blind', required=False)
 
