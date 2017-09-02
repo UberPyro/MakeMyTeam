@@ -279,6 +279,8 @@ def generate_mcr(ck_weight, cntr_weight, ck_dir, ck_lv, blind):
 Metagame available for [to] data: %f%%
 Metagame available for [by] data: %f%%
 
+ck = check, ct = counter
+
 %s%s%s%s%s%s%s%s%s%s%s
 
 %s
