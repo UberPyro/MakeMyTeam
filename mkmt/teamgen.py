@@ -360,7 +360,7 @@ def core_builder(weights, ck_dir, gen_qty, bl_wl, bl_wl_mode, blind, f):
     return custom_generator(np.array([]), weights, ck_dir, gen_qty, 25, 0, bl_wl, bl_wl_mode, blind, f)
 
 def team_generator(weights, ck_dir, bl_wl):
-    return custom_generator(np.array([]), weights, ck_dir, 6, 50, 1, bl_wl, 0, False, True)
+    return custom_generator(np.array([]), weights, ck_dir, 6, 50, 0, bl_wl, 0, False, True)
 
 def team_completer(pkmn_in, weights, ck_dir, bl_wl, bl_wl_mode, blind, f):
     return custom_generator(pkmn_in, weights, ck_dir, 6 - pkmn_in.size, 25, 0, bl_wl, bl_wl_mode, blind, f)
