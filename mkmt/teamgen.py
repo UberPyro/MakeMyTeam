@@ -146,7 +146,7 @@ def mmsfilt(team_data):  # multiple mega and species filter; also now filters z-
     return tuple(team_data[part][idx] for idx in (np.array([team_idx
     for team_idx in xrange(team_data[0].shape[0])
     for team in (team_data[0][team_idx].tolist(),)
-    for pkmn_spcs in ([aps_list_full[pkmn].split("|")[0] for pkmn in team,)
+    for pkmn_spcs in ([aps_list_full[pkmn].split("|")[0] for pkmn in team],)
     if (
     len(pkmn_spcs) == len(set(pkmn_spcs)) and
     len(filter(lambda pkmn: "-Mega" in pkmn, pkmn_spcs)) <= 1 and
