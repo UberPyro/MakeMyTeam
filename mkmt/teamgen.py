@@ -147,13 +147,7 @@ def mmsfilt(team_data):  # multiple mega and species filter; also now filters z-
     for team_idx in xrange(team_data[0].shape[0])
     for team in (team_data[0][team_idx].tolist(),)
     for pkmn_spcs in ([aps_list_full[pkmn].split("|")[0] for pkmn in team],)
-    if (
-    len(pkmn_spcs) == len(set(pkmn_spcs)) and
-    len(filter(lambda pkmn: "-Mega" in pkmn, pkmn_spcs)) <= 1 and
-    len(filter(lambda pkmn: "z-" in pkmn or "Z DD" in pkmn, team)) <= 1
-    )
-    ]),)
-    )
+    if len(pkmn_spcs) == len(set(pkmn_spcs)) and len(filter(lambda pkmn: "-Mega" in pkmn, pkmn_spcs)) <= 1]),)
     for part in xrange(2))
 
 def disp_team(team_data, list_qty):  # remove "/n".join() and apply color alternations when ready
