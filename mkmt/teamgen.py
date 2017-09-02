@@ -205,7 +205,7 @@ def brmt(pkmn_in, ck_weight, cntr_weight, ck_dir, blind):
     for i, m in ((get_usage(apply_weights(weights[l], ck_dir)[pkmn_in]).tolist(), l) for l in ["Check", "Counter"]):
         for k, j in enumerate(i, 1):
             k = 1 + pkmn_in.size - k if ck_dir == "to" else k
-            content_data += "%d team members %s %f%% of the metagame, out of %f%% of the metagame available.\n" % (
+            content_data += "%d team member(s) %s %f%% of the metagame, out of %f%% of the metagame available.\n" % (
             k,
             {
             ("Check", "by"): "[Are Checked By]",
@@ -280,6 +280,7 @@ Metagame available for [to] data: %f%%
 Metagame available for [by] data: %f%%
 
 ck = check, ct = counter
+The numbers in the columns are in terms of '% metagame'
 
 %s%s%s%s%s%s%s%s%s%s%s
 
