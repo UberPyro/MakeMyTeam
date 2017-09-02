@@ -220,7 +220,7 @@ def brmt(pkmn_in, ck_weight, cntr_weight, ck_dir, blind):
     
     for m in ["Check", "Counter"]:
         l = apply_weights(weights[m], ck_dir)[pkmn_in].sum(0)
-        l = zip(l.tolist(), (l*sus_array).tolist())
+        l = zip(l.tolist(), (l*sus_array).tolist())  # checks, usage-weighted-checks
         content_data += ("List of opposing Pokemon and how many team members %s them.\n"
         "Note that a non-integer indicates a partial coverage.\n"
         "The 'Danger Score' is simply the raw quantity usage-weighted\n"
@@ -250,7 +250,7 @@ def brmt(pkmn_in, ck_weight, cntr_weight, ck_dir, blind):
         round(p, 6)
         )
         for f, (g, h, p) in enumerate(sorted(
-        ((aps_list_full[k], r, n) for k, (n, r) in enumerate(l)),
+        ((aps_list_full[k], r, n) for k, (n, r) in enumerate(l) if k in apsnd[ck_dir]),  # monID, (checks, usage-weighed-checks)
         key = lambda brmtsort: brmtsort[1],
         reverse = False if ck_dir == "to" else True
         ), 1)

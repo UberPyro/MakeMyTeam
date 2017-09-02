@@ -21,7 +21,7 @@ def brmtForm(pkmn_field_qty, fillbool=True):
         
         ck_weight = forms.CharField(label='Check Weighting')
         cntr_weight = forms.CharField(label='Counter Weighting')
-        ck_dir = forms.ChoiceField(label='View', choices=((('to', 'NSI/SSI/GSI To Data'), ('by', 'NSI/SSI/GSI By Data'))))
+        ck_dir = forms.ChoiceField(label='View', choices=((('by', 'NSI/SSI/GSI By Data'), ('to', 'NSI/SSI/GSI To Data'))))
         blind = forms.BooleanField(label='Make Usage Blind', required=False)
     
     
