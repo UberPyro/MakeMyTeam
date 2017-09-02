@@ -46,16 +46,16 @@ Pokemon combinations is too difficult, this algoritm ranks the Pokemon and takes
 generated). Then, it finds the best group from there (so if generating a full team from 
 scratch, it finds the best combinations of 6 elite stand-alone Pokemon). This has the 
 advnatage of producing teams that are scored higher, and shouldn't miss any top teams. 
-However, the teams tend to look alike, and the search is very shallow. This is currently 
-the default algorithm for most of the mkmt functions because it tends to be smarter in terms 
-of synergy between Pokemon. </li>
+However, the teams tend to look alike, and the search is very shallow, especially when 
+generating a full team of Pokemon. This is currently the default algorithm for most of 
+the mkmt functions because it tends to be smarter in terms of synergy between Pokemon. </li>
 
 <li>[Recursive]: Builds small cores to build bigger cores to build teams. 
 For example, a team of 6 is built from two cores of 3, which is each built by a stand-alone 
 Pokemon and a core of 2, which is each built from 2 stand-alone Pokemon. This has the advantage 
 of 'digging deeper' (considering a very large pool of Pokemon) and theoretically should 
 produce good diversity. However, it doesn't consider 'all combinations' and won't find every 
-highly rated combination. </li>
+highly rated combination. This is the default for the basic Team Generator function. </li>
 </ul>
 <p>Note that there is virtually no difference between these methods if generating two or 
 less Pokemon, and that the recursive algorithm may fail if a whitelist is set too small (under ~20)</p>
