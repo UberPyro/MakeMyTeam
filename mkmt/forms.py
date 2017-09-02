@@ -57,7 +57,7 @@ def partnerForm(blwl_field_qty, fillbool=True):
         bl_wl_mode = forms.ChoiceField(label='Blacklist/Whitelist Mode', choices=((0, 'Blacklist'), (1, 'Whitelist')))
         bl_rain = forms.BooleanField(label='Blacklist Rain', required=False)
         blind = forms.BooleanField(label='Make Usage Blind', required=False)
-        f = forms.BooleanField(label='Filter Duplicate Species and Megas', required=False)
+        f = forms.BooleanField(label='Filter Duplicate Species, Megas, and Z-Movers', required=False)
     
     return MadeForm
 
@@ -79,7 +79,7 @@ def coreForm(blwl_field_qty, fillbool=True):
         bl_wl_mode = forms.ChoiceField(label='Blacklist/Whitelist Mode', choices=((0, 'Blacklist'), (1, 'Whitelist')))
         bl_rain = forms.BooleanField(label='Blacklist Rain', required=False)
         blind = forms.BooleanField(label='Make Usage Blind', required=False)
-        f = forms.BooleanField(label='Filter Duplicate Species and Megas', required=False)
+        f = forms.BooleanField(label='Filter Duplicate Species, Megas, and Z-Movers', required=False)
     
     return MadeForm
 
@@ -113,7 +113,7 @@ def completeForm(pkmn_field_qty, blwl_field_qty, fillbool=True):
         bl_wl_mode = forms.ChoiceField(label='Blacklist/Whitelist Mode', choices=((0, 'Blacklist'), (1, 'Whitelist')))
         bl_rain = forms.BooleanField(label='Blacklist Rain', required=False)
         blind = forms.BooleanField(label='Make Usage Blind', required=False)
-        f = forms.BooleanField(label='Filter Duplicate Species and Megas', required=False)
+        f = forms.BooleanField(label='Filter Duplicate Species, Megas, and Z-Movers', required=False)
     
     return MadeForm
 
@@ -140,7 +140,7 @@ def replaceForm(pkmn_field_qty, blwl_field_qty, fillbool=True):
         bl_wl_mode = forms.ChoiceField(label='Blacklist/Whitelist Mode', choices=((0, 'Blacklist'), (1, 'Whitelist')))
         bl_rain = forms.BooleanField(label='Blacklist Rain', required=False)
         blind = forms.BooleanField(label='Make Usage Blind', required=False)
-        f = forms.BooleanField(label='Filter Duplicate Species and Megas', required=False)
+        f = forms.BooleanField(label='Filter Duplicate Species, Megas, and Z-Movers', required=False)
     
     return MadeForm
 
@@ -170,7 +170,7 @@ def customForm(pkmn_field_qty, blwl_field_qty, fillbool=True):
         bl_wl_mode = forms.ChoiceField(label='Blacklist/Whitelist Mode', choices=((0, 'Blacklist'), (1, 'Whitelist')))
         bl_rain = forms.BooleanField(label='Blacklist Rain', required=False)
         blind = forms.BooleanField(label='Make Usage Blind', required=False)
-        f = forms.BooleanField(label='Filter Duplicate Species and Megas', required=False)
+        f = forms.BooleanField(label='Filter Duplicate Species, Megas, and Z-Movers', required=False)
     
     return MadeForm
 
@@ -203,7 +203,7 @@ def counterForm(pkmn_field_qty, cntr_field_qty, blwl_field_qty, fillbool=True):
         
         bl_wl_mode = forms.ChoiceField(label='Blacklist/Whitelist Mode', choices=((0, 'Blacklist'), (1, 'Whitelist')))
         bl_rain = forms.BooleanField(label='Blacklist Rain', required=False)
-        f = forms.BooleanField(label='Filter Duplicate Species and Megas', required=False)
+        f = forms.BooleanField(label='Filter Duplicate Species, Megas, and Z-Movers', required=False)
     
     return MadeForm
 
