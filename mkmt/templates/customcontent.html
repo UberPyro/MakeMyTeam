@@ -1,6 +1,6 @@
 {% extends "header.html" %}
 {% block content %}
-<h3>Custom Generator Selected.</h3>
+<h3>Custom Generator</h3>
 <p>This allows team generation with full control over the parameters, and is probably the most useful function for competitive team generation. </p>
 <form action="" method="post">
     {{ form.as_p }}
@@ -39,8 +39,8 @@ Note that (especially for high values) the number of teams shown may be less tha
 Remember that it is good practice to consider many of the generated teams rather than just the very top ones (as lower ones can very well be better). </p>
 
 <p><em>Algorithm: </em></p>
-<ul>
-<li>[Combinational]: Finds all combinations of the top Pokemon. Since calculating all 
+
+<ul><li>[Combinational]: Finds all combinations of the top Pokemon. Since calculating all 
 Pokemon combinations is too difficult, this algorithm ranks the Pokemon and takes the top 
 17 ~ 19 Pokemon (this automatically scales higher the lower the number of Pokemon being 
 generated). Then, it finds the best group from there (so if generating a full team from 
@@ -50,13 +50,13 @@ However, the teams tend to look alike, and the search is very shallow, especiall
 generating a full team of Pokemon. This is currently the default algorithm for most of 
 the mkmt functions because it tends to be smarter in terms of synergy between Pokemon. </li>
 
-<li>[Recursive]: Builds small cores to build bigger cores to build teams. 
+<br><li>[Recursive]: Builds small cores to build bigger cores to build teams. 
 For example, a team of 6 is built from two cores of 3, which is each built by a stand-alone 
 Pokemon and a core of 2, which is each built from 2 stand-alone Pokemon. This has the advantage 
 of 'digging deeper' (considering a very large pool of Pokemon) and theoretically should 
 produce good diversity. However, it doesn't consider 'all combinations' and won't find every 
-highly rated combination. This is the default for the basic Team Generator function. </li>
-</ul>
+highly rated combination. This is the default for the basic Team Generator function. </li></ul>
+
 <p>Note that there is virtually no difference between these methods if generating two or 
 less Pokemon, and that the recursive algorithm may fail if a whitelist is set too small (under ~20)</p>
 

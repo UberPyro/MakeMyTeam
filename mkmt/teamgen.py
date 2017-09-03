@@ -280,7 +280,7 @@ Metagame available for [to] data: %f%%
 Metagame available for [by] data: %f%%
 
 ck = check, ct = counter
-The numbers in the columns are in terms of '% metagame'
+The numbers in the columns are in terms of '%% metagame'
 
 %s%s%s%s%s%s%s%s%s%s%s
 

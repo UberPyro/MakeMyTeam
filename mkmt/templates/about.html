@@ -70,9 +70,11 @@ pattern continues through the rest of the list. </p>
 <p>If there are any spelling errors or bugs, let me (UberPyro) know either on PS! or Smogon. If 
 you are a better programmer than me (doesn't take much) and want to make any optimizations/
 improvements/anything then let me know. If you want to make your own version on a faster 
-programming language or JavaScript (for the web), then you are free to do so. </p>
+programming language or JavaScript (for a better web implementation), then you are free to do so. </p>
 
-<p>The #1 most useful thing would be to improve the <a href=http://www.smogon.com/forums/threads/3607904/>Checks Compendium</a>. The current OU Set-Based Checks 
+<p><span style='text-decoration: underline;'>
+The #1 most useful thing would be to improve the </span>
+<a href=http://www.smogon.com/forums/threads/3607904/>Checks Compendium</a>. The current OU Set-Based Checks 
 Compendium is the only reason why the mkmt is able to exist at all, and it is the most important 
 database for team generation. </p>
 
@@ -116,20 +118,22 @@ it checks two times, three times, etc. This provides a solid method with which t
 generate teams: a recursive algorithm, and a combinations algorithm. The following explanation is a copy/paste 
 from the custom generation page: </p>
 
-    <ul><li>[1] Recursive Corebuilding: Builds small cores to build bigger cores to build teams. 
-    For example, a team of 6 is built from two cores of 3, which is each built by a stand-alone 
-    Pokemon and a core of 2, which is each built from 2 stand-alone Pokemon. This has the advantage 
-    of 'digging deeper' (considering a very large pool of Pokemon) and theoretically should 
-    produce good diversity. However, it doesn't consider 'all combinations' and won't find every 
-    highly rated combination. </li><br>
+<ul><li>[Combinational]: Finds all combinations of the top Pokemon. Since calculating all 
+Pokemon combinations is too difficult, this algorithm ranks the Pokemon and takes the top 
+17 ~ 19 Pokemon (this automatically scales higher the lower the number of Pokemon being 
+generated). Then, it finds the best group from there (so if generating a full team from 
+scratch, it finds the best combinations of 6 elite stand-alone Pokemon). This has the 
+advnatage of producing teams that are scored higher, and shouldn't miss any top teams. 
+However, the teams tend to look alike, and the search is very shallow, especially when 
+generating a full team of Pokemon. This is currently the default algorithm for most of 
+the mkmt functions because it tends to be smarter in terms of synergy between Pokemon. </li>
 
-    <li>[2] Top Combinations: Finds all combinations of the top Pokemon. Since calculating all 
-    Pokemon combinations is too difficult, this algorithm ranks the Pokemon and takes the top 
-    17 ~ 19 Pokemon (this automatically scales higher the lower the number of Pokemon being 
-    generated). Then, it finds the best group from there (so if generating a full team from 
-    scratch, it finds the best combinations of 6 elite stand-alone Pokemon). This has the 
-    advnatage of producing teams that are scored higher, and shouldn't miss any top teams. 
-    However, the teams tend to look alike, and the search is very shallow. </li></ul>
+<br><li>[Recursive]: Builds small cores to build bigger cores to build teams. 
+For example, a team of 6 is built from two cores of 3, which is each built by a stand-alone 
+Pokemon and a core of 2, which is each built from 2 stand-alone Pokemon. This has the advantage 
+of 'digging deeper' (considering a very large pool of Pokemon) and theoretically should 
+produce good diversity. However, it doesn't consider 'all combinations' and won't find every 
+highly rated combination. This is the default for the basic Team Generator function. </li></ul>
 
 <p>The basic idea is to generate a very large number of combinations of Pokemon, and then to rank those combinations. 
 If maximizing the number of Pokemon sets a team checks or counters, it will first try to maximize the number it 
