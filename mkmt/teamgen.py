@@ -320,7 +320,7 @@ def pkmn_cov_data(pkmn_in):
     return wformat("""
 %s
 
-%s
+<span style="white-space: normal;">%s</span>
 
 %s
 
