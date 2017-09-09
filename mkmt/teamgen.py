@@ -250,7 +250,7 @@ def brmt(pkmn_in, ck_weight, cntr_weight, ck_dir, blind):
         round(p, 6)
         )
         for f, (g, h, p) in enumerate(sorted(
-        ((aps_list_full[k], r, n) for k, (n, r) in enumerate(l) if k in apsnd[ck_dir]),  # monID, (checks, usage-weighed-checks)
+        ((aps_list_full[k], r, n) for k, (n, r) in enumerate(l) if k in apsnd[{"by": "to", "to": "by"}[ck_dir]]),  # monID, (checks, usage-weighed-checks)
         key = lambda brmtsort: brmtsort[1],
         reverse = False if ck_dir == "to" else True
         ), 1)
