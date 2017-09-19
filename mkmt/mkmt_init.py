@@ -75,7 +75,7 @@ try:
     with open("checks.txt") as checks_object:  #Loading checks comp
         checks = checks_object.read()
 except IOError: 
-    checks = rq.get('https://raw.githubusercontent.com/Hidden50/brmt/gh-pages/data/gen7OU.js').text
+    checks = rq.get('https://raw.githubusercontent.com/Hidden50/brmt/master/data/gen7OU.js').text
 
 checks = checks.split("\n")  #Taking out the garbage
 checks = [i.split(", ") for i in checks]
