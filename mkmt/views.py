@@ -144,7 +144,7 @@ def partner_finder(request):
                 form.cleaned_data["ck_dir"],
                 np.union1d(np.array(
                     [aps_list_full.index(form.cleaned_data['blwl%d' % i]) for i in xrange(bc) if form.cleaned_data['blwl%d' % i] in aps_list_full]
-                    ), np.array([aps_list_full.index(i) for i in 'Kingdra|??', 'Kabutops|??', 'Omastar|shell smash', 'Swampert-Mega|??'
+                    ), np.array([aps_list_full.index(i) for i in 'Kingdra|Swift Swim', 'Kabutops|SD Swift Swim', 'Omastar|SS Swift Swim', 'Swampert-Mega|Swift Swim'
                                  if form.cleaned_data["bl_rain"] and not int(form.cleaned_data["bl_wl_mode"])])),
                 int(form.cleaned_data["bl_wl_mode"]),
                 form.cleaned_data["blind"],
@@ -204,7 +204,7 @@ def core_builder(request):
                 form.cleaned_data["gen_qty"],
                 np.union1d(np.array(
                     [aps_list_full.index(form.cleaned_data['blwl%d' % i]) for i in xrange(bc) if form.cleaned_data['blwl%d' % i] in aps_list_full]
-                    ), np.array([aps_list_full.index(i) for i in 'Kingdra|??', 'Kabutops|??', 'Omastar|shell smash', 'Swampert-Mega|??'
+                    ), np.array([aps_list_full.index(i) for i in 'Kingdra|Swift Swim', 'Kabutops|SD Swift Swim', 'Omastar|SS Swift Swim', 'Swampert-Mega|Swift Swim'
                                  if form.cleaned_data["bl_rain"] and not int(form.cleaned_data["bl_wl_mode"])])),
                 int(form.cleaned_data["bl_wl_mode"]),
                 form.cleaned_data["blind"],
@@ -247,7 +247,7 @@ def team_generator(request):
             tg.team_generator(
             np.array(le(form.cleaned_data["weights"])),
             form.cleaned_data["ck_dir"],
-            np.array([aps_list_full.index(i) for i in 'Kingdra|??', 'Kabutops|??', 'Omastar|shell smash', 'Swampert-Mega|??' if form.cleaned_data["bl_rain"]])
+            np.array([aps_list_full.index(i) for i in 'Kingdra|Swift Swim', 'Kabutops|SD Swift Swim', 'Omastar|SS Swift Swim', 'Swampert-Mega|Swift Swim' if form.cleaned_data["bl_rain"]])
             )
             })
     
@@ -288,7 +288,7 @@ def team_completer(request):
                 form.cleaned_data["ck_dir"],
                 np.union1d(np.array(
                     [aps_list_full.index(form.cleaned_data['blwl%d' % i]) for i in xrange(bc) if form.cleaned_data['blwl%d' % i] in aps_list_full]
-                    ), np.array([aps_list_full.index(i) for i in 'Kingdra|??', 'Kabutops|??', 'Omastar|shell smash', 'Swampert-Mega|??'
+                    ), np.array([aps_list_full.index(i) for i in 'Kingdra|Swift Swim', 'Kabutops|SD Swift Swim', 'Omastar|SS Swift Swim', 'Swampert-Mega|Swift Swim'
                                  if form.cleaned_data["bl_rain"] and not int(form.cleaned_data["bl_wl_mode"])])),
                 int(form.cleaned_data["bl_wl_mode"]),
                 form.cleaned_data["blind"],
@@ -358,7 +358,7 @@ def replacement_suggestor(request):
                 form.cleaned_data["ck_dir"],
                 np.union1d(np.array(
                     [aps_list_full.index(form.cleaned_data['blwl%d' % i]) for i in xrange(bc) if form.cleaned_data['blwl%d' % i] in aps_list_full]
-                    ), np.array([aps_list_full.index(i) for i in 'Kingdra|??', 'Kabutops|??', 'Omastar|shell smash', 'Swampert-Mega|??'
+                    ), np.array([aps_list_full.index(i) for i in 'Kingdra|Swift Swim', 'Kabutops|SD Swift Swim', 'Omastar|SS Swift Swim', 'Swampert-Mega|Swift Swim'
                                  if form.cleaned_data["bl_rain"] and not int(form.cleaned_data["bl_wl_mode"])])),
                 int(form.cleaned_data["bl_wl_mode"]),
                 form.cleaned_data["blind"],
@@ -432,7 +432,7 @@ def custom_generator(request):
                 int(form.cleaned_data["alg"]),
                 np.union1d(np.array(
                     [aps_list_full.index(form.cleaned_data['blwl%d' % i]) for i in xrange(bc) if form.cleaned_data['blwl%d' % i] in aps_list_full]
-                    ), np.array([aps_list_full.index(i) for i in 'Kingdra|??', 'Kabutops|??', 'Omastar|shell smash', 'Swampert-Mega|??'
+                    ), np.array([aps_list_full.index(i) for i in 'Kingdra|Swift Swim', 'Kabutops|SD Swift Swim', 'Omastar|SS Swift Swim', 'Swampert-Mega|Swift Swim'
                                  if form.cleaned_data["bl_rain"] and not int(form.cleaned_data["bl_wl_mode"])])),
                 int(form.cleaned_data["bl_wl_mode"]),
                 form.cleaned_data["blind"],
@@ -507,7 +507,7 @@ def counterteam_generator(request):
                 form.cleaned_data["gen_qty"],
                 np.union1d(np.array(
                     [aps_list_full.index(form.cleaned_data['blwl%d' % i]) for i in xrange(bc) if form.cleaned_data['blwl%d' % i] in aps_list_full]
-                    ), np.array([aps_list_full.index(i) for i in 'Kingdra|??', 'Kabutops|??', 'Omastar|shell smash', 'Swampert-Mega|??'
+                    ), np.array([aps_list_full.index(i) for i in 'Kingdra|Swift Swim', 'Kabutops|SD Swift Swim', 'Omastar|SS Swift Swim', 'Swampert-Mega|Swift Swim'
                                  if form.cleaned_data["bl_rain"] and not int(form.cleaned_data["bl_wl_mode"])])),
                 int(form.cleaned_data["bl_wl_mode"]),
                 form.cleaned_data["f"]

@@ -75,7 +75,7 @@ try:
     with open("checks.txt") as checks_object:  #Loading checks comp
         checks = checks_object.read()
 except IOError: 
-    checks = rq.get('https://gist.githubusercontent.com/UberPyro/663d6ccf15a6b7642d593e27debf44db/raw/469d8f2231f60d9d2800ab61ec276d571a159bc9/checks.txt').text
+    checks = rq.get('https://gist.githubusercontent.com/UberPyro/d0e14aaaa8a7e7e472e58f27a9e68778/raw/2d168c387496f9f7ddd95aa5cb31c0db01f00ad3/checks.txt').text
 
 checks = checks.split("\n")  #Taking out the garbage
 checks = [i.split(", ") for i in checks]
@@ -131,7 +131,7 @@ try:
     with open("set_link.txt") as link_object:
         link = link_object.read()
 except IOError:
-    link = rq.get('https://gist.githubusercontent.com/UberPyro/ac48cc7f387a8479458a81a6db85c03e/raw/42eb00f89f06bfc4fc5bd83e9494934fe7c3ba1d/set_link.txt').text
+    link = rq.get('https://gist.githubusercontent.com/UberPyro/f9cd27f75931b673fc5facbf957e9e37/raw/a01e1b788aacbb593b0c5668438f2f2b34fa36af/set_link.txt').text
 set_dict = ast.literal_eval(link)
 
 try:
