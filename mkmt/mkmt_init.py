@@ -78,7 +78,7 @@ except IOError:
     checks = rq.get('https://gist.githubusercontent.com/UberPyro/d0e14aaaa8a7e7e472e58f27a9e68778/raw/2d168c387496f9f7ddd95aa5cb31c0db01f00ad3/checks.txt').text
 
 checks = checks.split("\n")  #Taking out the garbage
-checks = [i.split(", ") for i in checks]
+checks = [i.rstrip(",").split(", ") for i in checks] # Fixed trailing commas
 checks = [i for i in checks if len(i) >= 2]
 checks = [i for i in checks if i[1] in CK_LEVEL_LIST]
 
