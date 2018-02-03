@@ -150,14 +150,14 @@ except IOError:
     while rq.get(
     'http://www.smogon.com/stats/20%s-%s/gen7ou-1825.txt' % (
     str((m0+m1) // 12 + y0),
-    (lambda x: x if len(x)==2 else "0"+x)(str((m0+m1) % 12))
+    (lambda x: x if len(x)==2 else "0"+x)(str((m0+m1) + 1 % 12))
     )
     ).status_code == rq.codes.ok:
         m1 += 1
     m1 -= 1
     tup = (
     str((m0+m1) // 12 + y0),
-    (lambda x: x if len(x)==2 else "0"+x)(str((m0+m1) % 12))
+    (lambda x: x if len(x)==2 else "0"+x)(str((m0+m1) + 1 % 12))
     )
     usage = rq.get('http://www.smogon.com/stats/20%s-%s/gen7ou-1825.txt' % tup).text
     set_usage = rq.get('http://www.smogon.com/stats/20%s-%s/moveset/gen7ou-1825.txt' % tup)
@@ -187,7 +187,7 @@ for i in aps_list_full:
         if isinstance(k, tuple):  #if provided a math operation, initialize math operation (new)
             k, L = k
             
-        #fet the set-usage-per-Pokemon from a unique identifier in the moveset usage
+        #get the set-usage-per-Pokemon from a unique identifier in the moveset usage
                                                                                       #First finds pokemon in moveset_usage.txt, then finds set (since it must follow), 
         percent_position = set_usage.find(k,set_usage.find(j + filler))+len(k)+1      #then add length of set name, then add one to account for space
         percent_usage_raw = set_usage[percent_position:percent_position + 6]   #Grabs 5 digit decimal

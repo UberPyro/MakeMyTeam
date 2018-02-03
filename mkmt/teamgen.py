@@ -81,7 +81,7 @@ dir_dict = {"by":1, "to":-1}
 def gen_team(imons, ddir, dweight, genq=6, excl=set(), sus_array=sus_array, checks=checks):
     emons = np.copy(imons)  #Numpy arrays in function arguments are apparently pointed to rather than copied. 
     if genq == 1:
-        return gen_team_brute(emons, ddir, dweight, 1, excl)
+        return gen_team_brute(emons, ddir, dweight, 1, excl, sus_array, checks)
     ebool = emons.size>0
     cdict = apply_weights(dweight, ddir, checks)
     tpool = np.array(list(set(apsnd[ddir]).difference(imons, excl)))  #tpool (total pool) is an array of all Pokemon which the generator can choose
