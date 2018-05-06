@@ -144,20 +144,20 @@ try:
     usage_origin = "source file"
         
 except IOError:
-    m0 = 6
-    y0 = 17
+    m0 = 3
+    y0 = 18
     m1 = 0
     while rq.get(
     'http://www.smogon.com/stats/20%s-%s/gen7ou-1825.txt' % (
     str((m0+m1) // 12 + y0),
-    (lambda x: x if len(x)==2 else "0"+x)(str((m0+m1) + 1 % 12))
+    (lambda x: x if len(x)==2 else "0"+x)(str((m0+m1) % 12 + 1))
     )
     ).status_code == rq.codes.ok:
         m1 += 1
     m1 -= 1
     tup = (
     str((m0+m1) // 12 + y0),
-    (lambda x: x if len(x)==2 else "0"+x)(str((m0+m1) + 1 % 12))
+    (lambda x: x if len(x)==2 else "0"+x)(str((m0+m1) % 12 + 1))
     )
     usage = rq.get('http://www.smogon.com/stats/20%s-%s/gen7ou-1825.txt' % tup).text
     set_usage = rq.get('http://www.smogon.com/stats/20%s-%s/moveset/gen7ou-1825.txt' % tup)
@@ -190,6 +190,7 @@ for i in aps_list_full:
         #get the set-usage-per-Pokemon from a unique identifier in the moveset usage
                                                                                       #First finds pokemon in moveset_usage.txt, then finds set (since it must follow), 
         percent_position = set_usage.find(k,set_usage.find(j + filler))+len(k)+1      #then add length of set name, then add one to account for space
+        if percent_position - len(k) - 1 == -1: continue   # NEW: ignores sets that don't exist
         percent_usage_raw = set_usage[percent_position:percent_position + 6]   #Grabs 5 digit decimal
         set_percent = float(percent_usage_raw.strip(" "))                      #Strips spaces and converts to float
         
